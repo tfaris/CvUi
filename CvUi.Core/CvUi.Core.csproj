@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="CvFunctionFactory.cs" />
     <Compile Include="CvFunction.cs" />
-    <Compile Include="FilterOption.cs" />
+    <Compile Include="CvFunctionOption.cs" />
     <Compile Include="ICvFunction.cs" />
     <Compile Include="ICvFunctionOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -68,6 +68,13 @@ namespace CvUi.Core
                         if (opt.CreatesType.IsAssignableFrom(typeof(OutputArray)))
                         {
                             maybeOutputParameter = i;
+
+                            if (parameters[i] == null)
+                            {
+                                // Convenience if output matrix was not specified. It's just easier
+                                // to create it here.
+                                parameters[i] = new Mat();
+                            }
                         }
                         if (parameters[i] != null)
                         {

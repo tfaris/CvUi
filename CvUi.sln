@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvUi.Tests", "CvUi.Tests\Cv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvUi.Core", "CvUi.Core\CvUi.Core.csproj", "{B002E8D2-576E-48A5-A61B-9955394F210C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvUi", "CvUi\CvUi.csproj", "{9797A05A-33A2-4A3D-B420-2683CAC84117}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B002E8D2-576E-48A5-A61B-9955394F210C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B002E8D2-576E-48A5-A61B-9955394F210C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B002E8D2-576E-48A5-A61B-9955394F210C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9797A05A-33A2-4A3D-B420-2683CAC84117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9797A05A-33A2-4A3D-B420-2683CAC84117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9797A05A-33A2-4A3D-B420-2683CAC84117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9797A05A-33A2-4A3D-B420-2683CAC84117}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
