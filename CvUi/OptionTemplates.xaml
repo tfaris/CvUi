@@ -33,11 +33,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" SharedSizeGroup="CvOptionLabel" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="{Binding OptionName}" />
-            <Button Grid.Column="1" HorizontalAlignment="Center" Command="{Binding PickMatrixCommand}">
+            <TextBlock Grid.Column="0" Text="{Binding OptionName}" VerticalAlignment="Center" />
+            <Button Grid.Column="1" HorizontalAlignment="Center" Margin="5 0 0 0" VerticalAlignment="Center" Command="{Binding PickMatrixCommand}">
                 <TextBlock Text="Pick image" />
             </Button>
+            <Image Grid.Column="2" Source="{Binding SelectedImage.ImageSource}" Margin="5 0 0 0" Width="50" Height="50" />
         </Grid>
     </DataTemplate>
 

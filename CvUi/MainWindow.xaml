@@ -8,7 +8,7 @@
         xmlns:localview="clr-namespace:CvUi.View"
         mc:Ignorable="d"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
-        Title="CvUi" Height="589.417" Width="857.822">
+        Title="CvUi" Height="589.417" Width="857.822" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:DataTypeConverter x:Key="DataTypeConverter"></local:DataTypeConverter>
         <localview:FunctionOptionTemplateSelector x:Key="FunctionOptionTemplateSelector" />
@@ -91,6 +91,11 @@
                                     Margin="5 0 0 0"
                                     Command="{Binding DataContext.CloseImageCommand, RelativeSource={RelativeSource AncestorType=local:MainWindow}}" 
                                     CommandParameter="{Binding }" />
+                            <StackPanel.InputBindings>
+                                <MouseBinding Gesture="MiddleClick" 
+                                              Command="{Binding DataContext.CloseImageCommand, RelativeSource={RelativeSource AncestorType=local:MainWindow}}" 
+                                              CommandParameter="{Binding }" />
+                            </StackPanel.InputBindings>
                         </StackPanel>
                     </DataTemplate>
                 </TabControl.ItemTemplate>

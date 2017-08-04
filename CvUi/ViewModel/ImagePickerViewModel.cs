@@ -41,7 +41,7 @@ namespace CvUi.ViewModel
         public ImagePickerViewModel(MainViewModel mainView)
         {
             _thumbs = mainView.Images;
-            SelectedImage = _thumbs.LastOrDefault();
+            SelectedImage = mainView.Images[mainView.SelectedImageIndex];
         }
     }
 }

@@ -14,11 +14,15 @@ namespace CvUi.ViewModel
     {
         object _value;
         object[] _optionChoices;
+        ImageViewModel _selectedImage;
 
         public Core.ICvFunctionOption Option { get; private set; }
 
         public string OptionName { get { return Option.OptionName; } }
 
+        /// <summary>
+        /// Get or set option choices (when applicable).
+        /// </summary>
         public object[] OptionChoices { get => _optionChoices; set => Set(ref _optionChoices, value); }
 
         public object Value
@@ -33,6 +37,11 @@ namespace CvUi.ViewModel
                 Set(ref _value, value);
             }
         }
+
+        /// <summary>
+        /// Get or set the selected image (when applicable).
+        /// </summary>
+        public ImageViewModel SelectedImage { get => _selectedImage; set => Set(ref _selectedImage, value); }
 
         public Type OptionType { get { return Option.CreatesType; } }
 
@@ -59,6 +68,7 @@ namespace CvUi.ViewModel
             MessengerInstance.Send(msg);
             if (msg.SelectedImage != null)
             {
+                SelectedImage = msg.SelectedImage;
                 var stream = msg.SelectedImage.ImageStream;
                 var mat = OpenCvSharp.Mat.FromStream(stream, OpenCvSharp.ImreadModes.AnyColor);
                 Value = mat;

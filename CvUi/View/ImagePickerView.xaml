@@ -12,20 +12,22 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         
-        <ListView ItemsSource="{Binding ImageThumbs}" SelectedItem="{Binding SelectedImage, Mode=TwoWay}" Grid.Row="0">
+        <ListView ItemsSource="{Binding ImageThumbs}" SelectedItem="{Binding SelectedImage, Mode=TwoWay}" Grid.Row="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" />
+                    <WrapPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding ImageSource}" Width="100" Height="100" Margin="25">
-                        <Image.InputBindings>
+                    <StackPanel>
+                        <Image Source="{Binding ImageSource}" Width="100" Height="100" Margin="25" />
+                        <TextBlock Text="{Binding Name}" MinWidth="50" HorizontalAlignment="Center" />
+                        <StackPanel.InputBindings>
                             <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.OkCommand, RelativeSource={RelativeSource AncestorType=local:ImagePickerView}}" />
-                        </Image.InputBindings>
-                    </Image>
+                        </StackPanel.InputBindings>
+                    </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ListView>

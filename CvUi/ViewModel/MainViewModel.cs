@@ -15,7 +15,7 @@ namespace CvUi.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        int _selectedImageIndex;
+        int _selectedImageIndex = -1;
         string _cvFuncFilter;
         IEnumerable<CvFunctionViewModel> _funcs;
         IEnumerable<CvFunctionOptionViewModel> _currentFunctionOptions;
