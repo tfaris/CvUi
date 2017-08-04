@@ -79,7 +79,22 @@
 
             <GridSplitter Grid.Column="1" Width="5px" HorizontalAlignment="Stretch" />
 
-            <TabControl Grid.Column="2" ItemsSource="{Binding Images}" SelectedIndex="{Binding SelectedImageIndex}" >
+            <TabControl Grid.Column="2" ItemsSource="{Binding Images}" SelectedIndex="{Binding SelectedImageIndex}">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" MinWidth="50" />
+                            <Button Content="x" 
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Cursor="Hand"
+                                    Margin="5 0 0 0"
+                                    Command="{Binding DataContext.CloseImageCommand, RelativeSource={RelativeSource AncestorType=local:MainWindow}}" 
+                                    CommandParameter="{Binding }" />
+                        </StackPanel>
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+
                 <TabControl.ContentTemplate>
                     <DataTemplate>
                         <Image Source="{Binding ImageSource}" Stretch="Uniform" />
@@ -87,6 +102,6 @@
                 </TabControl.ContentTemplate>
             </TabControl>
         </Grid>
-
+        
     </Grid>
 </Window>

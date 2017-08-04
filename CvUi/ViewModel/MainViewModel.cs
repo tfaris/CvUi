@@ -21,9 +21,8 @@ namespace CvUi.ViewModel
         IEnumerable<CvFunctionOptionViewModel> _currentFunctionOptions;
         CvFunctionViewModel _selectedFunction;
 
-        public ICommand OpenCommand { get; private set; }
-        public ICommand RunCvFunctionCommand { get; private set; }
         public ObservableCollection<ImageViewModel> Images { get; private set; }
+
         public int SelectedImageIndex
         {
             get
@@ -93,12 +92,23 @@ namespace CvUi.ViewModel
             }
         }
 
+        public ICommand OpenCommand { get; private set; }
+        public ICommand RunCvFunctionCommand { get; private set; }
+        public ICommand CloseImageCommand { get; private set; }
+
         public MainViewModel()
         {
             Images = new ObservableCollection<ImageViewModel>();
             OpenCommand = new RelayCommand(Open);
             RunCvFunctionCommand = new RelayCommand(RunCvFunction);
+            CloseImageCommand = new RelayCommand<ImageViewModel>(CloseImage);
             UpdateFunctions();
+        }
+
+        private void CloseImage(ImageViewModel obj)
+        {
+            Images.Remove(obj);
+            obj.Cleanup();
         }
 
         void UpdateFunctions(string filter = null)
@@ -132,7 +142,10 @@ namespace CvUi.ViewModel
                 foreach (var f in files)
                 {
                     var imgStream = imageProvider.OpenImage(f);
-                    var vm = new ImageViewModel(imgStream);
+                    var vm = new ImageViewModel(imgStream)
+                    {
+                        Name = System.IO.Path.GetFileName(f)
+                    };
                     Images.Add(vm);
                     SelectedImageIndex = Images.Count - 1;
                 }
@@ -159,7 +172,11 @@ namespace CvUi.ViewModel
 
             if (img != null)
             {
-                Images.Add(new ImageViewModel(img.ToMemoryStream()));
+                var vm = new ImageViewModel(img.ToMemoryStream())
+                {
+                    Name = SelectedFunction.Name
+                };
+                Images.Add(vm);
                 img.Dispose();
                 SelectedImageIndex = Images.Count - 1;
             }

@@ -13,7 +13,10 @@ namespace CvUi.ViewModel
     public class ImageViewModel : GalaSoft.MvvmLight.ViewModelBase
     {
         ImageSource _source;
-        System.IO.Stream _imageStream;
+        Stream _imageStream;
+        string _name;
+
+        public string Name { get => _name; set => Set(ref _name, value); }
 
         public ImageSource ImageSource
         {
@@ -43,10 +46,16 @@ namespace CvUi.ViewModel
             }
         }
 
-        public ImageViewModel(System.IO.Stream imageStream)
+        public ImageViewModel(Stream imageStream)
         {
             // TODO: Stream needs to be disposed somewhere 
             _imageStream = imageStream;
+        }
+
+        public override void Cleanup()
+        {
+            _imageStream.Dispose();
+            base.Cleanup();
         }
     }
 }
