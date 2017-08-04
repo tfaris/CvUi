@@ -51,7 +51,23 @@ namespace CvUi.Core
                     functions.Add(new CvFunction(methodInfo, options));
                 }
             }
+
             return functions;
+        }
+
+        public IEnumerable<ICvFunction> GetCustomCvFunctions()
+        {
+            return new ICvFunction[]
+            {
+                new CvFunction(GrayScale, "Grayscale [CvUi]", new ICvFunctionOption[] { new CvFunctionOption(typeof(Mat), "src", false) })
+            };
+        }
+
+        Mat GrayScale(object[] args)
+        {
+            var output = new Mat();
+            Cv2.CvtColor(args[0] as Mat, output, ColorConversionCodes.BGR2GRAY);
+            return output;
         }
     }
 }

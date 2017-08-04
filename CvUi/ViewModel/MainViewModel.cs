@@ -103,7 +103,8 @@ namespace CvUi.ViewModel
 
         void UpdateFunctions(string filter = null)
         {
-            var cvFuncs = new Core.CvFunctionFactory().FindCvFunctions();
+            var factory = new Core.CvFunctionFactory();
+            var cvFuncs = factory.FindCvFunctions().Concat(factory.GetCustomCvFunctions());
             if (!string.IsNullOrEmpty(filter))
             {
                 cvFuncs = cvFuncs.Where(f => f.Name.ToLower().Contains(filter.ToLower()));
